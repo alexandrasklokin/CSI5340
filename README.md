@@ -1,2 +1,6 @@
-# CSI5340
-Course work for CSI5340
+# CSI5155 - Machine Learning
+
+Alexandra Sklokin
+300010511
+
+Assignments
