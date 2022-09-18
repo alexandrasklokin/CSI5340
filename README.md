@@ -1,4 +1,4 @@
-# CSI5155 - Machine Learning
+# CSI5340 - Introduction to RL & DL
 
 Alexandra Sklokin
 300010511
