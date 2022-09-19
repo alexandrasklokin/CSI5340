@@ -6,7 +6,7 @@ Student Number: 300010511
 
 This is my Assignment 1 submission.
 
-## StochasticGradientDescent
+## StochasticGradientDescent.ipynb
 
 Python noteboook for Stochastic Gradient Descent implementation.
 
@@ -21,3 +21,11 @@ Excel sheet for performance of Stochastic Gradient Descent algorithm. Displays E
 ## outputs_weight_decay.xlxs
 
 Excel sheet for performance of Stochastic Gradient Descent algorithm with Weight Decay. Displays E_in_bar, E_out_bar, and E_bias. 
+
+# graphs
+
+Folder contains graphs used for report.
+
+# graph_weight_decay
+
+Folder contains graphs used for report.
