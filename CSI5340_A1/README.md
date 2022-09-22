@@ -26,6 +26,6 @@ Folder containing output of Results.ipynb. Graphs of relationships between param
 
 Folder contains images used in report.
 
-# Report
+## Report
 
 Folder contains assignment report and report source code.
