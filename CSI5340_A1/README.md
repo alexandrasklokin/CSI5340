@@ -14,10 +14,18 @@ Python noteboook for Stochastic Gradient Descent implementation.
 
 Python notebook for producing report graphs and tables.
 
-## outputs.xlxs
+## outputs.xlxs / outputs_weight_decay.xlxs
 
-Excel sheet for performance of Stochastic Gradient Descent algorithm. Displays E_in_bar, E_out_bar, and E_bias. 
+Excel sheet for performance of Stochastic Gradient Descent algorithm with and without Weight Decay. Displays E_in_bar, E_out_bar, and E_bias. 
 
-## outputs_weight_decay.xlxs
+## graphs / graphs_weight_decay
 
-Excel sheet for performance of Stochastic Gradient Descent algorithm with Weight Decay. Displays E_in_bar, E_out_bar, and E_bias. 
+Folder containing output of Results.ipynb. Graphs of relationships between parameters and performance metrics.
+
+## images
+
+Folder contains images used in report.
+
+# Report
+
+Folder contains assignment report and report source code.
