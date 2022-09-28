@@ -205,7 +205,7 @@ node {
     key: "else_branch"
     value {
       func {
-        name: "global_step_cond_false_169640"
+        name: "global_step_cond_false_146142"
       }
     }
   }
@@ -222,7 +222,7 @@ node {
     key: "then_branch"
     value {
       func {
-        name: "global_step_cond_true_169639"
+        name: "global_step_cond_true_146141"
       }
     }
   }
@@ -3545,7 +3545,7 @@ node {
     key: "else_branch"
     value {
       func {
-        name: "dnn_zero_fraction_cond_false_169749"
+        name: "dnn_zero_fraction_cond_false_146251"
       }
     }
   }
@@ -3572,7 +3572,7 @@ node {
     key: "then_branch"
     value {
       func {
-        name: "dnn_zero_fraction_cond_true_169748"
+        name: "dnn_zero_fraction_cond_true_146250"
       }
     }
   }
@@ -6216,7 +6216,7 @@ node {
     key: "else_branch"
     value {
       func {
-        name: "dnn_zero_fraction_1_cond_false_169863"
+        name: "dnn_zero_fraction_1_cond_false_146365"
       }
     }
   }
@@ -6243,7 +6243,7 @@ node {
     key: "then_branch"
     value {
       func {
-        name: "dnn_zero_fraction_1_cond_true_169862"
+        name: "dnn_zero_fraction_1_cond_true_146364"
       }
     }
   }
@@ -7397,7 +7397,7 @@ node {
     key: "else_branch"
     value {
       func {
-        name: "dnn_zero_fraction_2_cond_false_169932"
+        name: "dnn_zero_fraction_2_cond_false_146434"
       }
     }
   }
@@ -7424,7 +7424,7 @@ node {
     key: "then_branch"
     value {
       func {
-        name: "dnn_zero_fraction_2_cond_true_169931"
+        name: "dnn_zero_fraction_2_cond_true_146433"
       }
     }
   }
@@ -28399,1227 +28399,7 @@ node {
 library {
   function {
     signature {
-      name: "dnn_zero_fraction_2_cond_true_169931"
-      input_arg {
-        name: "count_nonzero_notequal_dnn_logits_biasadd"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "cast"
-        type: DT_INT64
-      }
-      output_arg {
-        name: "optionalfromvalue"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_1"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_2"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_3"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_4"
-        type: DT_VARIANT
-      }
-    }
-    node_def {
-      name: "count_nonzero/zeros"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_FLOAT
-            tensor_shape {
-            }
-            float_val: 0.0
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/zeros"
-      }
-    }
-    node_def {
-      name: "count_nonzero/NotEqual"
-      op: "NotEqual"
-      input: "count_nonzero_notequal_dnn_logits_biasadd"
-      input: "count_nonzero/zeros:output:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 50
-              }
-              dim {
-                size: 10
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "incompatible_shape_error"
-        value {
-          b: true
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/NotEqual"
-      }
-    }
-    node_def {
-      name: "count_nonzero/Cast"
-      op: "Cast"
-      input: "count_nonzero/NotEqual:z:0"
-      attr {
-        key: "DstT"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "SrcT"
-        value {
-          type: DT_BOOL
-        }
-      }
-      attr {
-        key: "Truncate"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 50
-              }
-              dim {
-                size: 10
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/Cast"
-      }
-    }
-    node_def {
-      name: "count_nonzero/Const"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\000\000\000\000\001\000\000\000"
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/Const"
-      }
-    }
-    node_def {
-      name: "count_nonzero/nonzero_count"
-      op: "Sum"
-      input: "count_nonzero/Cast:y:0"
-      input: "count_nonzero/Const:output:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "Tidx"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "keep_dims"
-        value {
-          b: false
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/nonzero_count"
-      }
-    }
-    node_def {
-      name: "Cast"
-      op: "Cast"
-      input: "count_nonzero/nonzero_count:output:0"
-      attr {
-        key: "DstT"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "SrcT"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "Truncate"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Cast"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue"
-      op: "OptionalFromValue"
-      input: "count_nonzero/zeros:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_FLOAT
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_1"
-      op: "OptionalFromValue"
-      input: "count_nonzero/NotEqual:z:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_BOOL
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_1"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_2"
-      op: "OptionalFromValue"
-      input: "count_nonzero/Cast:y:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT32
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_2"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_3"
-      op: "OptionalFromValue"
-      input: "count_nonzero/Const:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT32
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_3"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_4"
-      op: "OptionalFromValue"
-      input: "count_nonzero/nonzero_count:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT32
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_4"
-      }
-    }
-    ret {
-      key: "cast"
-      value: "Cast:y:0"
-    }
-    ret {
-      key: "optionalfromvalue"
-      value: "OptionalFromValue:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_1"
-      value: "OptionalFromValue_1:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_2"
-      value: "OptionalFromValue_2:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_3"
-      value: "OptionalFromValue_3:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_4"
-      value: "OptionalFromValue_4:optional:0"
-    }
-    attr {
-      key: "_input_shapes"
-      value {
-        list {
-          shape {
-            dim {
-              size: 50
-            }
-            dim {
-              size: 10
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: 50
-                }
-                dim {
-                  size: 10
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  function {
-    signature {
-      name: "dnn_zero_fraction_2_cond_false_169932"
-      input_arg {
-        name: "count_nonzero_notequal_dnn_logits_biasadd"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "count_nonzero_nonzero_count"
-        type: DT_INT64
-      }
-      output_arg {
-        name: "optionalfromvalue"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_1"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_2"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_3"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalnone"
-        type: DT_VARIANT
-      }
-    }
-    node_def {
-      name: "count_nonzero/zeros"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_FLOAT
-            tensor_shape {
-            }
-            float_val: 0.0
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/zeros"
-      }
-    }
-    node_def {
-      name: "count_nonzero/NotEqual"
-      op: "NotEqual"
-      input: "count_nonzero_notequal_dnn_logits_biasadd"
-      input: "count_nonzero/zeros:output:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 50
-              }
-              dim {
-                size: 10
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "incompatible_shape_error"
-        value {
-          b: true
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/NotEqual"
-      }
-    }
-    node_def {
-      name: "count_nonzero/Cast"
-      op: "Cast"
-      input: "count_nonzero/NotEqual:z:0"
-      attr {
-        key: "DstT"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "SrcT"
-        value {
-          type: DT_BOOL
-        }
-      }
-      attr {
-        key: "Truncate"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 50
-              }
-              dim {
-                size: 10
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/Cast"
-      }
-    }
-    node_def {
-      name: "count_nonzero/Const"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\000\000\000\000\001\000\000\000"
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/Const"
-      }
-    }
-    node_def {
-      name: "count_nonzero/nonzero_count"
-      op: "Sum"
-      input: "count_nonzero/Cast:y:0"
-      input: "count_nonzero/Const:output:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "Tidx"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "keep_dims"
-        value {
-          b: false
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/nonzero_count"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue"
-      op: "OptionalFromValue"
-      input: "count_nonzero/zeros:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_FLOAT
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_1"
-      op: "OptionalFromValue"
-      input: "count_nonzero/NotEqual:z:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_BOOL
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_1"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_2"
-      op: "OptionalFromValue"
-      input: "count_nonzero/Cast:y:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT64
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_2"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_3"
-      op: "OptionalFromValue"
-      input: "count_nonzero/Const:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT32
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_3"
-      }
-    }
-    node_def {
-      name: "OptionalNone"
-      op: "OptionalNone"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalNone"
-      }
-    }
-    ret {
-      key: "count_nonzero_nonzero_count"
-      value: "count_nonzero/nonzero_count:output:0"
-    }
-    ret {
-      key: "optionalfromvalue"
-      value: "OptionalFromValue:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_1"
-      value: "OptionalFromValue_1:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_2"
-      value: "OptionalFromValue_2:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_3"
-      value: "OptionalFromValue_3:optional:0"
-    }
-    ret {
-      key: "optionalnone"
-      value: "OptionalNone:optional:0"
-    }
-    attr {
-      key: "_input_shapes"
-      value {
-        list {
-          shape {
-            dim {
-              size: 50
-            }
-            dim {
-              size: 10
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: 50
-                }
-                dim {
-                  size: 10
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  function {
-    signature {
-      name: "dnn_zero_fraction_cond_false_169749"
-      input_arg {
-        name: "count_nonzero_notequal_dnn_hiddenlayer_0_batchnorm_0_batchnorm_add_1"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "count_nonzero_nonzero_count"
-        type: DT_INT64
-      }
-      output_arg {
-        name: "optionalfromvalue"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_1"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_2"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_3"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalnone"
-        type: DT_VARIANT
-      }
-    }
-    node_def {
-      name: "count_nonzero/zeros"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_FLOAT
-            tensor_shape {
-            }
-            float_val: 0.0
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/zeros"
-      }
-    }
-    node_def {
-      name: "count_nonzero/NotEqual"
-      op: "NotEqual"
-      input: "count_nonzero_notequal_dnn_hiddenlayer_0_batchnorm_0_batchnorm_add_1"
-      input: "count_nonzero/zeros:output:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 50
-              }
-              dim {
-                size: 100
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "incompatible_shape_error"
-        value {
-          b: true
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/NotEqual"
-      }
-    }
-    node_def {
-      name: "count_nonzero/Cast"
-      op: "Cast"
-      input: "count_nonzero/NotEqual:z:0"
-      attr {
-        key: "DstT"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "SrcT"
-        value {
-          type: DT_BOOL
-        }
-      }
-      attr {
-        key: "Truncate"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 50
-              }
-              dim {
-                size: 100
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/Cast"
-      }
-    }
-    node_def {
-      name: "count_nonzero/Const"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\000\000\000\000\001\000\000\000"
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/Const"
-      }
-    }
-    node_def {
-      name: "count_nonzero/nonzero_count"
-      op: "Sum"
-      input: "count_nonzero/Cast:y:0"
-      input: "count_nonzero/Const:output:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "Tidx"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "keep_dims"
-        value {
-          b: false
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/nonzero_count"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue"
-      op: "OptionalFromValue"
-      input: "count_nonzero/zeros:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_FLOAT
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_1"
-      op: "OptionalFromValue"
-      input: "count_nonzero/NotEqual:z:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_BOOL
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_1"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_2"
-      op: "OptionalFromValue"
-      input: "count_nonzero/Cast:y:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT64
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_2"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_3"
-      op: "OptionalFromValue"
-      input: "count_nonzero/Const:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT32
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_3"
-      }
-    }
-    node_def {
-      name: "OptionalNone"
-      op: "OptionalNone"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalNone"
-      }
-    }
-    ret {
-      key: "count_nonzero_nonzero_count"
-      value: "count_nonzero/nonzero_count:output:0"
-    }
-    ret {
-      key: "optionalfromvalue"
-      value: "OptionalFromValue:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_1"
-      value: "OptionalFromValue_1:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_2"
-      value: "OptionalFromValue_2:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_3"
-      value: "OptionalFromValue_3:optional:0"
-    }
-    ret {
-      key: "optionalnone"
-      value: "OptionalNone:optional:0"
-    }
-    attr {
-      key: "_input_shapes"
-      value {
-        list {
-          shape {
-            dim {
-              size: 50
-            }
-            dim {
-              size: 100
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: 50
-                }
-                dim {
-                  size: 100
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  function {
-    signature {
-      name: "dnn_zero_fraction_1_cond_true_169862"
+      name: "dnn_zero_fraction_1_cond_true_146364"
       input_arg {
         name: "count_nonzero_notequal_dnn_hiddenlayer_1_batchnorm_1_batchnorm_add_1"
         type: DT_FLOAT
@@ -30055,7 +28835,791 @@ library {
   }
   function {
     signature {
-      name: "global_step_cond_false_169640"
+      name: "dnn_zero_fraction_2_cond_false_146434"
+      input_arg {
+        name: "count_nonzero_notequal_dnn_logits_biasadd"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "count_nonzero_nonzero_count"
+        type: DT_INT64
+      }
+      output_arg {
+        name: "optionalfromvalue"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_1"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_2"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_3"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalnone"
+        type: DT_VARIANT
+      }
+    }
+    node_def {
+      name: "count_nonzero/zeros"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+            }
+            float_val: 0.0
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/zeros"
+      }
+    }
+    node_def {
+      name: "count_nonzero/NotEqual"
+      op: "NotEqual"
+      input: "count_nonzero_notequal_dnn_logits_biasadd"
+      input: "count_nonzero/zeros:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 50
+              }
+              dim {
+                size: 10
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/NotEqual"
+      }
+    }
+    node_def {
+      name: "count_nonzero/Cast"
+      op: "Cast"
+      input: "count_nonzero/NotEqual:z:0"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_BOOL
+        }
+      }
+      attr {
+        key: "Truncate"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 50
+              }
+              dim {
+                size: 10
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/Cast"
+      }
+    }
+    node_def {
+      name: "count_nonzero/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 2
+              }
+            }
+            tensor_content: "\000\000\000\000\001\000\000\000"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/Const"
+      }
+    }
+    node_def {
+      name: "count_nonzero/nonzero_count"
+      op: "Sum"
+      input: "count_nonzero/Cast:y:0"
+      input: "count_nonzero/Const:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "Tidx"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "keep_dims"
+        value {
+          b: false
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/nonzero_count"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue"
+      op: "OptionalFromValue"
+      input: "count_nonzero/zeros:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_1"
+      op: "OptionalFromValue"
+      input: "count_nonzero/NotEqual:z:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_BOOL
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_1"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_2"
+      op: "OptionalFromValue"
+      input: "count_nonzero/Cast:y:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT64
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_2"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_3"
+      op: "OptionalFromValue"
+      input: "count_nonzero/Const:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT32
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_3"
+      }
+    }
+    node_def {
+      name: "OptionalNone"
+      op: "OptionalNone"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalNone"
+      }
+    }
+    ret {
+      key: "count_nonzero_nonzero_count"
+      value: "count_nonzero/nonzero_count:output:0"
+    }
+    ret {
+      key: "optionalfromvalue"
+      value: "OptionalFromValue:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_1"
+      value: "OptionalFromValue_1:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_2"
+      value: "OptionalFromValue_2:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_3"
+      value: "OptionalFromValue_3:optional:0"
+    }
+    ret {
+      key: "optionalnone"
+      value: "OptionalNone:optional:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+            dim {
+              size: 50
+            }
+            dim {
+              size: 10
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: 50
+                }
+                dim {
+                  size: 10
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "dnn_zero_fraction_cond_false_146251"
+      input_arg {
+        name: "count_nonzero_notequal_dnn_hiddenlayer_0_batchnorm_0_batchnorm_add_1"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "count_nonzero_nonzero_count"
+        type: DT_INT64
+      }
+      output_arg {
+        name: "optionalfromvalue"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_1"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_2"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_3"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalnone"
+        type: DT_VARIANT
+      }
+    }
+    node_def {
+      name: "count_nonzero/zeros"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+            }
+            float_val: 0.0
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/zeros"
+      }
+    }
+    node_def {
+      name: "count_nonzero/NotEqual"
+      op: "NotEqual"
+      input: "count_nonzero_notequal_dnn_hiddenlayer_0_batchnorm_0_batchnorm_add_1"
+      input: "count_nonzero/zeros:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 50
+              }
+              dim {
+                size: 100
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/NotEqual"
+      }
+    }
+    node_def {
+      name: "count_nonzero/Cast"
+      op: "Cast"
+      input: "count_nonzero/NotEqual:z:0"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_BOOL
+        }
+      }
+      attr {
+        key: "Truncate"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 50
+              }
+              dim {
+                size: 100
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/Cast"
+      }
+    }
+    node_def {
+      name: "count_nonzero/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 2
+              }
+            }
+            tensor_content: "\000\000\000\000\001\000\000\000"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/Const"
+      }
+    }
+    node_def {
+      name: "count_nonzero/nonzero_count"
+      op: "Sum"
+      input: "count_nonzero/Cast:y:0"
+      input: "count_nonzero/Const:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "Tidx"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "keep_dims"
+        value {
+          b: false
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/nonzero_count"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue"
+      op: "OptionalFromValue"
+      input: "count_nonzero/zeros:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_1"
+      op: "OptionalFromValue"
+      input: "count_nonzero/NotEqual:z:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_BOOL
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_1"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_2"
+      op: "OptionalFromValue"
+      input: "count_nonzero/Cast:y:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT64
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_2"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_3"
+      op: "OptionalFromValue"
+      input: "count_nonzero/Const:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT32
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_3"
+      }
+    }
+    node_def {
+      name: "OptionalNone"
+      op: "OptionalNone"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalNone"
+      }
+    }
+    ret {
+      key: "count_nonzero_nonzero_count"
+      value: "count_nonzero/nonzero_count:output:0"
+    }
+    ret {
+      key: "optionalfromvalue"
+      value: "OptionalFromValue:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_1"
+      value: "OptionalFromValue_1:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_2"
+      value: "OptionalFromValue_2:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_3"
+      value: "OptionalFromValue_3:optional:0"
+    }
+    ret {
+      key: "optionalnone"
+      value: "OptionalNone:optional:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+            dim {
+              size: 50
+            }
+            dim {
+              size: 100
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: 50
+                }
+                dim {
+                  size: 100
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "global_step_cond_false_146142"
       input_arg {
         name: "placeholder"
         type: DT_RESOURCE
@@ -30102,835 +29666,7 @@ library {
   }
   function {
     signature {
-      name: "dnn_zero_fraction_1_cond_false_169863"
-      input_arg {
-        name: "count_nonzero_notequal_dnn_hiddenlayer_1_batchnorm_1_batchnorm_add_1"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "count_nonzero_nonzero_count"
-        type: DT_INT64
-      }
-      output_arg {
-        name: "optionalfromvalue"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_1"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_2"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_3"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalnone"
-        type: DT_VARIANT
-      }
-    }
-    node_def {
-      name: "count_nonzero/zeros"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_FLOAT
-            tensor_shape {
-            }
-            float_val: 0.0
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/zeros"
-      }
-    }
-    node_def {
-      name: "count_nonzero/NotEqual"
-      op: "NotEqual"
-      input: "count_nonzero_notequal_dnn_hiddenlayer_1_batchnorm_1_batchnorm_add_1"
-      input: "count_nonzero/zeros:output:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 50
-              }
-              dim {
-                size: 100
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "incompatible_shape_error"
-        value {
-          b: true
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/NotEqual"
-      }
-    }
-    node_def {
-      name: "count_nonzero/Cast"
-      op: "Cast"
-      input: "count_nonzero/NotEqual:z:0"
-      attr {
-        key: "DstT"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "SrcT"
-        value {
-          type: DT_BOOL
-        }
-      }
-      attr {
-        key: "Truncate"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 50
-              }
-              dim {
-                size: 100
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/Cast"
-      }
-    }
-    node_def {
-      name: "count_nonzero/Const"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\000\000\000\000\001\000\000\000"
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/Const"
-      }
-    }
-    node_def {
-      name: "count_nonzero/nonzero_count"
-      op: "Sum"
-      input: "count_nonzero/Cast:y:0"
-      input: "count_nonzero/Const:output:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "Tidx"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "keep_dims"
-        value {
-          b: false
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/nonzero_count"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue"
-      op: "OptionalFromValue"
-      input: "count_nonzero/zeros:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_FLOAT
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_1"
-      op: "OptionalFromValue"
-      input: "count_nonzero/NotEqual:z:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_BOOL
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_1"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_2"
-      op: "OptionalFromValue"
-      input: "count_nonzero/Cast:y:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT64
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_2"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_3"
-      op: "OptionalFromValue"
-      input: "count_nonzero/Const:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT32
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_3"
-      }
-    }
-    node_def {
-      name: "OptionalNone"
-      op: "OptionalNone"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalNone"
-      }
-    }
-    ret {
-      key: "count_nonzero_nonzero_count"
-      value: "count_nonzero/nonzero_count:output:0"
-    }
-    ret {
-      key: "optionalfromvalue"
-      value: "OptionalFromValue:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_1"
-      value: "OptionalFromValue_1:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_2"
-      value: "OptionalFromValue_2:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_3"
-      value: "OptionalFromValue_3:optional:0"
-    }
-    ret {
-      key: "optionalnone"
-      value: "OptionalNone:optional:0"
-    }
-    attr {
-      key: "_input_shapes"
-      value {
-        list {
-          shape {
-            dim {
-              size: 50
-            }
-            dim {
-              size: 100
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: 50
-                }
-                dim {
-                  size: 100
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  function {
-    signature {
-      name: "dnn_zero_fraction_cond_true_169748"
-      input_arg {
-        name: "count_nonzero_notequal_dnn_hiddenlayer_0_batchnorm_0_batchnorm_add_1"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "cast"
-        type: DT_INT64
-      }
-      output_arg {
-        name: "optionalfromvalue"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_1"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_2"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_3"
-        type: DT_VARIANT
-      }
-      output_arg {
-        name: "optionalfromvalue_4"
-        type: DT_VARIANT
-      }
-    }
-    node_def {
-      name: "count_nonzero/zeros"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_FLOAT
-            tensor_shape {
-            }
-            float_val: 0.0
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/zeros"
-      }
-    }
-    node_def {
-      name: "count_nonzero/NotEqual"
-      op: "NotEqual"
-      input: "count_nonzero_notequal_dnn_hiddenlayer_0_batchnorm_0_batchnorm_add_1"
-      input: "count_nonzero/zeros:output:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 50
-              }
-              dim {
-                size: 100
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "incompatible_shape_error"
-        value {
-          b: true
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/NotEqual"
-      }
-    }
-    node_def {
-      name: "count_nonzero/Cast"
-      op: "Cast"
-      input: "count_nonzero/NotEqual:z:0"
-      attr {
-        key: "DstT"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "SrcT"
-        value {
-          type: DT_BOOL
-        }
-      }
-      attr {
-        key: "Truncate"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 50
-              }
-              dim {
-                size: 100
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/Cast"
-      }
-    }
-    node_def {
-      name: "count_nonzero/Const"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\000\000\000\000\001\000\000\000"
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/Const"
-      }
-    }
-    node_def {
-      name: "count_nonzero/nonzero_count"
-      op: "Sum"
-      input: "count_nonzero/Cast:y:0"
-      input: "count_nonzero/Const:output:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "Tidx"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "keep_dims"
-        value {
-          b: false
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "count_nonzero/nonzero_count"
-      }
-    }
-    node_def {
-      name: "Cast"
-      op: "Cast"
-      input: "count_nonzero/nonzero_count:output:0"
-      attr {
-        key: "DstT"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "SrcT"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "Truncate"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Cast"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue"
-      op: "OptionalFromValue"
-      input: "count_nonzero/zeros:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_FLOAT
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_1"
-      op: "OptionalFromValue"
-      input: "count_nonzero/NotEqual:z:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_BOOL
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_1"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_2"
-      op: "OptionalFromValue"
-      input: "count_nonzero/Cast:y:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT32
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_2"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_3"
-      op: "OptionalFromValue"
-      input: "count_nonzero/Const:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT32
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_3"
-      }
-    }
-    node_def {
-      name: "OptionalFromValue_4"
-      op: "OptionalFromValue"
-      input: "count_nonzero/nonzero_count:output:0"
-      attr {
-        key: "Toutput_types"
-        value {
-          list {
-            type: DT_INT32
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "OptionalFromValue_4"
-      }
-    }
-    ret {
-      key: "cast"
-      value: "Cast:y:0"
-    }
-    ret {
-      key: "optionalfromvalue"
-      value: "OptionalFromValue:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_1"
-      value: "OptionalFromValue_1:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_2"
-      value: "OptionalFromValue_2:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_3"
-      value: "OptionalFromValue_3:optional:0"
-    }
-    ret {
-      key: "optionalfromvalue_4"
-      value: "OptionalFromValue_4:optional:0"
-    }
-    attr {
-      key: "_input_shapes"
-      value {
-        list {
-          shape {
-            dim {
-              size: 50
-            }
-            dim {
-              size: 100
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: 50
-                }
-                dim {
-                  size: 100
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  function {
-    signature {
-      name: "global_step_cond_true_169639"
+      name: "global_step_cond_true_146141"
       input_arg {
         name: "read_readvariableop_global_step"
         type: DT_RESOURCE
@@ -31015,6 +29751,1270 @@ library {
           value {
             list {
               shape {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "dnn_zero_fraction_cond_true_146250"
+      input_arg {
+        name: "count_nonzero_notequal_dnn_hiddenlayer_0_batchnorm_0_batchnorm_add_1"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "cast"
+        type: DT_INT64
+      }
+      output_arg {
+        name: "optionalfromvalue"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_1"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_2"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_3"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_4"
+        type: DT_VARIANT
+      }
+    }
+    node_def {
+      name: "count_nonzero/zeros"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+            }
+            float_val: 0.0
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/zeros"
+      }
+    }
+    node_def {
+      name: "count_nonzero/NotEqual"
+      op: "NotEqual"
+      input: "count_nonzero_notequal_dnn_hiddenlayer_0_batchnorm_0_batchnorm_add_1"
+      input: "count_nonzero/zeros:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 50
+              }
+              dim {
+                size: 100
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/NotEqual"
+      }
+    }
+    node_def {
+      name: "count_nonzero/Cast"
+      op: "Cast"
+      input: "count_nonzero/NotEqual:z:0"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_BOOL
+        }
+      }
+      attr {
+        key: "Truncate"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 50
+              }
+              dim {
+                size: 100
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/Cast"
+      }
+    }
+    node_def {
+      name: "count_nonzero/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 2
+              }
+            }
+            tensor_content: "\000\000\000\000\001\000\000\000"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/Const"
+      }
+    }
+    node_def {
+      name: "count_nonzero/nonzero_count"
+      op: "Sum"
+      input: "count_nonzero/Cast:y:0"
+      input: "count_nonzero/Const:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "Tidx"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "keep_dims"
+        value {
+          b: false
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/nonzero_count"
+      }
+    }
+    node_def {
+      name: "Cast"
+      op: "Cast"
+      input: "count_nonzero/nonzero_count:output:0"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "Truncate"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Cast"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue"
+      op: "OptionalFromValue"
+      input: "count_nonzero/zeros:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_1"
+      op: "OptionalFromValue"
+      input: "count_nonzero/NotEqual:z:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_BOOL
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_1"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_2"
+      op: "OptionalFromValue"
+      input: "count_nonzero/Cast:y:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT32
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_2"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_3"
+      op: "OptionalFromValue"
+      input: "count_nonzero/Const:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT32
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_3"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_4"
+      op: "OptionalFromValue"
+      input: "count_nonzero/nonzero_count:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT32
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_4"
+      }
+    }
+    ret {
+      key: "cast"
+      value: "Cast:y:0"
+    }
+    ret {
+      key: "optionalfromvalue"
+      value: "OptionalFromValue:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_1"
+      value: "OptionalFromValue_1:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_2"
+      value: "OptionalFromValue_2:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_3"
+      value: "OptionalFromValue_3:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_4"
+      value: "OptionalFromValue_4:optional:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+            dim {
+              size: 50
+            }
+            dim {
+              size: 100
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: 50
+                }
+                dim {
+                  size: 100
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "dnn_zero_fraction_2_cond_true_146433"
+      input_arg {
+        name: "count_nonzero_notequal_dnn_logits_biasadd"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "cast"
+        type: DT_INT64
+      }
+      output_arg {
+        name: "optionalfromvalue"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_1"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_2"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_3"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_4"
+        type: DT_VARIANT
+      }
+    }
+    node_def {
+      name: "count_nonzero/zeros"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+            }
+            float_val: 0.0
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/zeros"
+      }
+    }
+    node_def {
+      name: "count_nonzero/NotEqual"
+      op: "NotEqual"
+      input: "count_nonzero_notequal_dnn_logits_biasadd"
+      input: "count_nonzero/zeros:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 50
+              }
+              dim {
+                size: 10
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/NotEqual"
+      }
+    }
+    node_def {
+      name: "count_nonzero/Cast"
+      op: "Cast"
+      input: "count_nonzero/NotEqual:z:0"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_BOOL
+        }
+      }
+      attr {
+        key: "Truncate"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 50
+              }
+              dim {
+                size: 10
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/Cast"
+      }
+    }
+    node_def {
+      name: "count_nonzero/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 2
+              }
+            }
+            tensor_content: "\000\000\000\000\001\000\000\000"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/Const"
+      }
+    }
+    node_def {
+      name: "count_nonzero/nonzero_count"
+      op: "Sum"
+      input: "count_nonzero/Cast:y:0"
+      input: "count_nonzero/Const:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "Tidx"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "keep_dims"
+        value {
+          b: false
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/nonzero_count"
+      }
+    }
+    node_def {
+      name: "Cast"
+      op: "Cast"
+      input: "count_nonzero/nonzero_count:output:0"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "Truncate"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Cast"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue"
+      op: "OptionalFromValue"
+      input: "count_nonzero/zeros:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_1"
+      op: "OptionalFromValue"
+      input: "count_nonzero/NotEqual:z:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_BOOL
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_1"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_2"
+      op: "OptionalFromValue"
+      input: "count_nonzero/Cast:y:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT32
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_2"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_3"
+      op: "OptionalFromValue"
+      input: "count_nonzero/Const:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT32
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_3"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_4"
+      op: "OptionalFromValue"
+      input: "count_nonzero/nonzero_count:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT32
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_4"
+      }
+    }
+    ret {
+      key: "cast"
+      value: "Cast:y:0"
+    }
+    ret {
+      key: "optionalfromvalue"
+      value: "OptionalFromValue:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_1"
+      value: "OptionalFromValue_1:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_2"
+      value: "OptionalFromValue_2:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_3"
+      value: "OptionalFromValue_3:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_4"
+      value: "OptionalFromValue_4:optional:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+            dim {
+              size: 50
+            }
+            dim {
+              size: 10
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: 50
+                }
+                dim {
+                  size: 10
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "dnn_zero_fraction_1_cond_false_146365"
+      input_arg {
+        name: "count_nonzero_notequal_dnn_hiddenlayer_1_batchnorm_1_batchnorm_add_1"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "count_nonzero_nonzero_count"
+        type: DT_INT64
+      }
+      output_arg {
+        name: "optionalfromvalue"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_1"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_2"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalfromvalue_3"
+        type: DT_VARIANT
+      }
+      output_arg {
+        name: "optionalnone"
+        type: DT_VARIANT
+      }
+    }
+    node_def {
+      name: "count_nonzero/zeros"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+            }
+            float_val: 0.0
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/zeros"
+      }
+    }
+    node_def {
+      name: "count_nonzero/NotEqual"
+      op: "NotEqual"
+      input: "count_nonzero_notequal_dnn_hiddenlayer_1_batchnorm_1_batchnorm_add_1"
+      input: "count_nonzero/zeros:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 50
+              }
+              dim {
+                size: 100
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/NotEqual"
+      }
+    }
+    node_def {
+      name: "count_nonzero/Cast"
+      op: "Cast"
+      input: "count_nonzero/NotEqual:z:0"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_BOOL
+        }
+      }
+      attr {
+        key: "Truncate"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 50
+              }
+              dim {
+                size: 100
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/Cast"
+      }
+    }
+    node_def {
+      name: "count_nonzero/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 2
+              }
+            }
+            tensor_content: "\000\000\000\000\001\000\000\000"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/Const"
+      }
+    }
+    node_def {
+      name: "count_nonzero/nonzero_count"
+      op: "Sum"
+      input: "count_nonzero/Cast:y:0"
+      input: "count_nonzero/Const:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "Tidx"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "keep_dims"
+        value {
+          b: false
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "count_nonzero/nonzero_count"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue"
+      op: "OptionalFromValue"
+      input: "count_nonzero/zeros:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_1"
+      op: "OptionalFromValue"
+      input: "count_nonzero/NotEqual:z:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_BOOL
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_1"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_2"
+      op: "OptionalFromValue"
+      input: "count_nonzero/Cast:y:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT64
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_2"
+      }
+    }
+    node_def {
+      name: "OptionalFromValue_3"
+      op: "OptionalFromValue"
+      input: "count_nonzero/Const:output:0"
+      attr {
+        key: "Toutput_types"
+        value {
+          list {
+            type: DT_INT32
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalFromValue_3"
+      }
+    }
+    node_def {
+      name: "OptionalNone"
+      op: "OptionalNone"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "OptionalNone"
+      }
+    }
+    ret {
+      key: "count_nonzero_nonzero_count"
+      value: "count_nonzero/nonzero_count:output:0"
+    }
+    ret {
+      key: "optionalfromvalue"
+      value: "OptionalFromValue:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_1"
+      value: "OptionalFromValue_1:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_2"
+      value: "OptionalFromValue_2:optional:0"
+    }
+    ret {
+      key: "optionalfromvalue_3"
+      value: "OptionalFromValue_3:optional:0"
+    }
+    ret {
+      key: "optionalnone"
+      value: "OptionalNone:optional:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+            dim {
+              size: 50
+            }
+            dim {
+              size: 100
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: 50
+                }
+                dim {
+                  size: 100
+                }
               }
             }
           }
