@@ -14,9 +14,9 @@ from torch.utils.data import DataLoader
 from torch import optim
 from torch.autograd import Variable
 
+LOSS_FUNCTION = nn.CrossEntropyLoss()
 
 # # Helper Functions
-
 
 def displayMNIST(data, index, title="Title", save=False):
     
@@ -118,7 +118,7 @@ def getLossAccuracy(cnn_model, data_load, dataset, details=False):
     return (loss, accuracy)
 
 
-def train(cnn_model, data_load, optim):
+def train(cnn_model, data_load, optim, EPOCHS):
     
     training_accuracy = []
     training_loss = []
@@ -208,7 +208,7 @@ def untargeted_pgd_attack(cnn_model, images, true_labels, eps=0.3, alpha=0.001, 
     return (loss, images, true_labels)
 
 
-def pgd_train(cnn_model, data_load, optim, pgd_function, eps=0.3, alpha=0.01, iterations=1):
+def pgd_train(cnn_model, data_load, optim, pgd_function, EPOCHS, eps=0.3, alpha=0.01, iterations=1):
     
     training_accuracy = []
     training_loss = []
@@ -266,7 +266,7 @@ def pgd_train(cnn_model, data_load, optim, pgd_function, eps=0.3, alpha=0.01, it
                 print ('Epoch [{}/{}], Progress [{}/{}], Loss: {:.4f}' .format(epoch + 1, EPOCHS, i + 1, total_step, batch_training_loss))
         
         # GET LOSS AND ACCURACY AT EVERY EPOCH (ON PERTURBED DATA)            
-        (tr_loss, tr_accuracy) = getLossAccuracyAdversarial(cnn_pgd, perturbed_imgs, pgd_label)
+        (tr_loss, tr_accuracy) = getLossAccuracyAdversarial(cnn_model, perturbed_imgs, pgd_label)
         adv_training_loss.append(tr_loss)
         adv_training_accuracy.append(tr_accuracy)
         #print ('      Adversarial Loss: {:.4f}, Adversarial Accuracy: {:.4f}' .format(tr_loss, tr_accuracy))
@@ -323,7 +323,7 @@ def pgd_test(cnn_model, data_load, pgd_function, eps=0.3, alpha=0.01, iterations
         (_, temp) = getLossAccuracyAdversarial(cnn_model, adv_image, testing_label, details=False)
         pgd_accuracy += temp
         
-    pgd_accuracy = pgd_accuracy/10
+    pgd_accuracy = pgd_accuracy/100
     
     if details: print('Accuracy on original Test Set: %.5f' % test_accuracy)
     if details: print('Accuracy of Perturbed Test Set: %.5f' % pgd_accuracy)
