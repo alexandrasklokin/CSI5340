@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 import numpy as np
 import time
 import sys
@@ -16,7 +19,7 @@ from torch.autograd import Variable
 
 LOSS_FUNCTION = nn.CrossEntropyLoss()
 
-# # Helper Functions
+# ___________________________________________________________________________________________________________________ HELPER FUNCTIONS
 
 def displayMNIST(data, index, title="Title", save=False):
     
@@ -25,7 +28,6 @@ def displayMNIST(data, index, title="Title", save=False):
     if save: plt.savefig(title+".png")
     
     plt.show()
-
 
 def displayImage(data, index, title="Title", save=False):
     
@@ -65,7 +67,12 @@ def plotLoss(loss, title="Title", save=False):
     plt.show()
 
 
-# # CNN Implementation
+def removeTrueLabelFromTensor(T, i):
+    T[i] = (-1000000000.0)
+    return T
+
+
+# ___________________________________________________________________________________________________________________ CNN IMPLEMENTATION
 
 
 class CNN (nn.Module) :
@@ -78,14 +85,14 @@ class CNN (nn.Module) :
             nn.Conv2d(
                 in_channels=1,              
                 out_channels=16,            
-                kernel_size=3,              
+                kernel_size=8,              
                 stride=1,                   
                 padding=2,                  
             ),                              
             nn.ReLU(),                      
             nn.MaxPool2d(kernel_size=2),    
         )
-        self.out = nn.Linear(3600, 10)
+        self.out = nn.Linear(2304, 10)
     
     def forward(self, x):
         
@@ -116,7 +123,6 @@ def getLossAccuracy(cnn_model, data_load, dataset, details=False):
     if details: print(dataset+' accuracy: %.5f' % accuracy)
         
     return (loss, accuracy)
-
 
 def train(cnn_model, data_load, optim, EPOCHS):
     
@@ -159,7 +165,7 @@ def train(cnn_model, data_load, optim, EPOCHS):
     return (training_loss, training_accuracy)
 
 
-# # PGD (UNTARGETED)
+# ___________________________________________________________________________________________________________________ UNTARGETED PGD
 
 
 def getLossAccuracyAdversarial(cnn_model, adversarial_imgs, true_labels, details=False):
@@ -189,7 +195,7 @@ def getLossAccuracyAdversarial(cnn_model, adversarial_imgs, true_labels, details
     return (loss, accuracy)
 
 
-def untargeted_pgd_attack(cnn_model, images, true_labels, eps=0.3, alpha=0.001, iterations=1):
+def untargeted_pgd_attack(cnn_model, images, true_labels, eps, alpha, iterations):
     
     original_images = images.data
     
@@ -208,7 +214,7 @@ def untargeted_pgd_attack(cnn_model, images, true_labels, eps=0.3, alpha=0.001, 
     return (loss, images, true_labels)
 
 
-def pgd_train(cnn_model, data_load, optim, pgd_function, EPOCHS, eps=0.3, alpha=0.01, iterations=1):
+def pgd_train(cnn_model, data_load, optim, pgd_function, EPOCHS, eps, alpha, iterations):
     
     training_accuracy = []
     training_loss = []
@@ -281,10 +287,10 @@ def pgd_train(cnn_model, data_load, optim, pgd_function, EPOCHS, eps=0.3, alpha=
             training_loss, training_accuracy, adv_training_loss, adv_training_accuracy)
 
 
-# # PGD (TARGETED)
+# ___________________________________________________________________________________________________________________ TARGETED PGD
 
 
-def targeted_pgd_attack(cnn_model, images, true_labels, eps=0.3, alpha=0.001, iterations=1):
+def targeted_pgd_attack(cnn_model, images, true_labels, eps, alpha, iterations, details=False):
     
     original_images = images.data
     
@@ -300,30 +306,50 @@ def targeted_pgd_attack(cnn_model, images, true_labels, eps=0.3, alpha=0.001, it
         eta = torch.clamp(adv_images - original_images, min=-eps, max=eps)
         images = torch.clamp(original_images + eta, min=0, max=1).detach_()
         
+    if details: print("____________________________________________ BEFORE PERTURBATION")
+    if details: displayImage(original_images, 0)
+    if details: print("TRUE LABEL:" + str(true_labels[0]))
+        
     targeted_label, _ = cnn_model(images)
+    
+    if details: print("____________________________________________ AFTER PERTURBATION (TARGETTED)")
+    if details: displayImage(images, 0)
+    if details: print("CNN RESULT:" + str(targeted_label[0]))
+    
+    # DO NOT ALLOW TO CHOOSE TRUE LABEL
+    targeted_label = [elem.detach().numpy() for elem in targeted_label]
+    targeted_label = [removeTrueLabelFromTensor(targeted_label[i], true_labels[i]) for i in range(len(targeted_label))]
+    targeted_label = torch.Tensor(targeted_label)
     targeted_label = torch.max(targeted_label, 1)[1].data.squeeze()
+    
+    if details: print("AKA: "+str(targeted_label[0]))
             
     return (loss, images, targeted_label)
 
-
-# ## Evaluating on Test Data
+# ___________________________________________________________________________________________________________________ TESTING PGD
 
 
 def pgd_test(cnn_model, data_load, pgd_function, eps=0.3, alpha=0.01, iterations=1, details=False):
     
-    pgd_accuracy = 0
-    
     (_, test_accuracy) = getLossAccuracy(cnn_model, data_load, 'test', details=False)
     
-    total_step = len(data_load['train'])
-    
-    for i, (testing_data, testing_label) in enumerate(data_load['test']): 
-    
-        (_, adv_image, adv_label) = pgd_function(cnn_model, testing_data, testing_label, eps, alpha, iterations)
-        (_, temp) = getLossAccuracyAdversarial(cnn_model, adv_image, testing_label, details=False)
-        pgd_accuracy += temp
+    if eps == 0:
         
-    pgd_accuracy = pgd_accuracy/100
+        pgd_accuracy = test_accuracy
+        
+    else:        
+        adversarial_images = torch.empty(0,)
+        adversarial_labels = torch.empty(0,)
+    
+        total_step = len(data_load['test'])
+
+        for i, (testing_images, true_value) in enumerate(data_load['test']): 
+            
+            (_, perturbed_imgs, pgd_label) = pgd_function(cnn_model, testing_images, true_value, eps, alpha, iterations)
+            adversarial_images = torch.cat((adversarial_images, perturbed_imgs), 0)
+            adversarial_labels = torch.cat((adversarial_labels, pgd_label), 0)
+            
+        (_, pgd_accuracy) = getLossAccuracyAdversarial(cnn_model, adversarial_images, adversarial_labels)
     
     if details: print('Accuracy on original Test Set: %.5f' % test_accuracy)
     if details: print('Accuracy of Perturbed Test Set: %.5f' % pgd_accuracy)
