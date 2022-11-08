@@ -1,31 +1,35 @@
-# Assignment 1
+# Assignment 3
 
 Student Name: Alexandra Sklokin
 
 Student Number: 300010511
 
-This is my Assignment 1 submission.
+This is my Assignment 3 submission.
 
-## StochasticGradientDescent
+## CNN_PGD.py
 
-Python noteboook for Stochastic Gradient Descent implementation.
+Python code for CNN model and PGD algorithm implementation.
 
-## Results.ipynb
+## Experiments.ipynb
 
-Python notebook for producing report graphs and tables.
+Python notebook utilizes CNN_PGD.py to obtain training and testing results. Also used to produce graphs and tables.
 
-## outputs.xlxs / outputs_weight_decay.xlxs
+## Adversarial_Examples.ipynb
 
-Excel sheet for performance of Stochastic Gradient Descent algorithm with and without Weight Decay. Displays E_in_bar, E_out_bar, and E_bias. 
+Python notebook utlized to produce examples of targeted and untargeted PGD.
 
-## graphs / graphs_weight_decay
+## Morgue_Implementation.ipynb
 
-Folder containing output of Results.ipynb. Graphs of relationships between parameters and performance metrics.
+Old python noteboook used during development stage of CNN_PGD.py. Need not be referenced.
 
-## images
+## output
 
-Folder contains images used in report.
+Folder contains outputs from python notebookes (stats, graphs, and perturbation images)
 
-## Report
+## data
+
+Folder containing original MNIST dataset.
+
+## report
 
 Folder contains assignment report and report source code.

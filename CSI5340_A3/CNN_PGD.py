@@ -10,6 +10,7 @@ import torch.nn as nn
 import tensorflow as tf
 import torchvision
 import torch
+from torchsummary import summary
 
 from sklearn.metrics import accuracy_score
 
@@ -82,22 +83,32 @@ class CNN (nn.Module) :
         super(CNN, self).__init__()
         
         self.layer1 = nn.Sequential(         
-            nn.Conv2d(
-                in_channels=1,              
-                out_channels=16,            
-                kernel_size=8,              
-                stride=1,                   
-                padding=2,                  
-            ),                              
-            nn.ReLU(),                      
-            nn.MaxPool2d(kernel_size=2),    
+            nn.Conv2d(in_channels=1, out_channels=8, kernel_size=5, stride=1, padding=2),  
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False),
         )
-        self.out = nn.Linear(2304, 10)
+        self.layer2 = nn.Sequential(  
+            nn.Conv2d(in_channels=8, out_channels=16, kernel_size=5, stride=1, padding=2),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False),            
+        )
+        self.fc1 = nn.Sequential(
+            nn.Linear(in_features=784, out_features=150, bias=True),
+            nn.ReLU(),
+        ) 
+        self.fc2 = nn.Sequential(
+            nn.Linear(in_features=150, out_features=150, bias=True),
+            nn.ReLU(),
+        ) 
+        self.out = nn.Linear(150, 10, bias=True)
     
     def forward(self, x):
         
         x = self.layer1(x)
-        x = x.view(x.size(0), -1)       
+        x = self.layer2(x)
+        x = x.view(x.size(0), -1)
+        x = self.fc1(x)  
+        x = self.fc2(x)  
         output = self.out(x)
         return output, x    # return x for visualization
 
@@ -319,7 +330,7 @@ def targeted_pgd_attack(cnn_model, images, true_labels, eps, alpha, iterations, 
     # DO NOT ALLOW TO CHOOSE TRUE LABEL
     targeted_label = [elem.detach().numpy() for elem in targeted_label]
     targeted_label = [removeTrueLabelFromTensor(targeted_label[i], true_labels[i]) for i in range(len(targeted_label))]
-    targeted_label = torch.Tensor(targeted_label)
+    targeted_label = torch.Tensor(np.array(targeted_label))
     targeted_label = torch.max(targeted_label, 1)[1].data.squeeze()
     
     if details: print("AKA: "+str(targeted_label[0]))
