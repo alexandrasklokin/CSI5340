@@ -10,11 +10,11 @@ This is my Assignment 4 submission.
 
 Folder contains all .ipynb files which implement VAE/GAN/WGAN for MNIST/CIFAR10.
 
-## output
+## /output
 
 Folder contains outputs from python notebookes (stats, graphs, figures, etc.)
 
-## report
+## /report
 
 Folder contains assignment report and report source code.
 
